@@ -615,7 +615,6 @@
     </div>
     <div class="tag-row">
       <span class="tag">UE5 C++</span>
-      <span class="tag">Gameplay Ability System</span>
       <span class="tag">Blender</span>
       <span class="tag">Maya</span>
       <span class="tag">Substance Painter</span>
@@ -637,7 +636,7 @@
     <div class="project-card">
       <!-- Thumbnail: swap the placeholder div for an <img> when ready -->
       <div class="project-thumb">
-        <span class="project-thumb-label">Screenshot / Key Art — Placeholder</span>
+        <img src="wanderers/img/keyart.jpg" alt="Wanderers of the Mist Key Art">
       </div>
 
       <div class="project-body">
@@ -646,14 +645,13 @@
 
         <p class="project-desc">
           A 2v2 positional combat system built around front/back slot mechanics and a custom
-          ability action framework on top of UE5's Gameplay Ability System. Four playable unit
-          kits with transformable weapons and a token-based status system driving cross-unit
+          ability action system. Two playable characters
+          with transformable weapons and a token-based status system driving cross-unit
           combo chains. Combat design is currently in active playtesting and subject to change.
         </p>
 
         <div class="project-meta">
           <span class="tag">UE5 C++</span>
-          <span class="tag">GAS</span>
           <span class="tag">Custom Action System</span>
           <span class="tag">Token-Based Combat</span>
           <span class="tag">Turn-Based</span>
@@ -663,6 +661,7 @@
         <!-- ROADMAP -->
         <div class="roadmap">
           <div class="roadmap-title">Development Roadmap</div>
+          <p class="project-desc">Development is subject to change based on feedback and market conditions.</p>
           <div class="roadmap-list">
 
             <div class="roadmap-item">
@@ -681,7 +680,7 @@
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
                 <strong>Combat UI</strong>
-                Full combat UI design pass. Token state display, action feedback, readability. Playtesting and refinement.
+                Full combat UI design pass. Action feedback, readability. Playtesting and refinement.
               </div>
             </div>
 
@@ -714,33 +713,36 @@
             </div>
 
             <div class="roadmap-item">
-              <div class="roadmap-date">2027.02</div>
+              <div class="roadmap-date">2027.02-03</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Enemy Roster</strong>
+                <strong>Enemy Roster and Frontend</strong>
+                Start menu, options, save/load system.
                 Additional enemies to complete a full single run. Playtesting.
               </div>
             </div>
 
             <div class="roadmap-item">
-              <div class="roadmap-date">2027.03</div>
+              <div class="roadmap-date">2027.03-04</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Frontend</strong>
-                Start menu, options, save/load system.
+                <strong>Performance Review, Testing and Early Release — v0.1</strong>
+                Performance checks with Unreal Insights, testing in different hardware configurations.
+                Early release on itch.io, Steam, and other PC platforms.
+                Testing and refinement continue, toward a full release.
               </div>
             </div>
 
             <div class="roadmap-item">
-              <div class="roadmap-date">2027.03</div>
+              <div class="roadmap-date">2027.Q4</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Early Release — v0.1</strong>
-                Release on itch.io, Steam, and other PC platforms.
-                Combat system refinement continues post-release based on player feedback.
-                Further development toward a full release.
+                <strong>Full Release</strong>
+                Final polish and bug fixes.
+                Community engagement and support.
               </div>
             </div>
+
 
           </div>
         </div>
@@ -785,14 +787,15 @@
       <p class="arch-desc">
         The combat pipeline runs from a central <code>BattleBoard</code> through a
         <code>TurnHandler</code> and <code>ActionSystemComponent</code> to a static
-        <code>TokenResolver</code>. Status token changes bubble up via GAS attribute
-        delegates to a delta-based UI update layer, avoiding polling. Positional state
+        <code>TokenResolver</code>. Status token changes bubble up via attribute
+        delegates to a UI update layer, avoiding polling. Positional state
         is stamped directly onto unit Ability System Components at slot assignment.
+
       </p>
-      <a class="big-link" href="https://github.com/yourusername/wotm-samples" target="_blank" rel="noopener">
+      <a class="big-link" href="wanderers/architecture.md" target="_blank" rel="noopener">
         <div class="big-link-body">
-          <div class="big-link-name">Source Extracts — GitHub</div>
-          <div class="big-link-desc">Selected C++ samples from the combat and token systems</div>
+          <div class="big-link-name">Full Diagram — GitHub</div>
+          <div class="big-link-desc">Brief explanation with interactive diagram</div>
         </div>
         <span class="big-link-arrow">→</span>
       </a>
@@ -855,7 +858,7 @@
   </section>
 
   <footer>
-    <p>Updated July 2026</p>
+    <p>Updated 2026/07/08</p>
   </footer>
 
 </main>

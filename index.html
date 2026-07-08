@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CM — Game Developer</title>
+  <title>CM — ゲームデベロッパー</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -22,7 +22,7 @@
       --muted:      #9E94B2;
       --border:     #524a72;
       --border-hi:  #6a6090;
-      --font-display: 'Cinzel', serif;
+      --font-display: 'Cinzel', 'Noto Sans JP', serif;
       --font-body:    'Crimson Pro', 'Noto Sans JP', serif;
       --font-ui:      'Noto Sans JP', 'Crimson Pro', sans-serif;
       --font-mono:    'JetBrains Mono', monospace;
@@ -566,9 +566,9 @@
 <nav>
   <div class="nav-name">Portfolio</div>
   <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#project">Project</a></li>
-    <li><a href="#art">Art &amp; 3D</a></li>
+    <li><a href="#about">自己紹介</a></li>
+    <li><a href="#project">プロジェクト</a></li>
+    <li><a href="#art">アート・3D</a></li>
   </ul>
 </nav>
 
@@ -583,11 +583,11 @@
         <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
       </svg>
     </div>
-    <div class="section-label">Game Developer</div>
-    <h1 class="hero-name">PLACEHOLDER</h1>
+    <div class="section-label">ゲームデベロッパー</div>
+    <h1 class="hero-name">モンテロンゴ　セサル</h1>
     <p class="hero-desc">
-      Building consumer games and their systems. Focused on UE5 C++, combat architecture,
-      and 3D asset pipelines. Currently developing an independent tactical roguelite.
+      コンシューマーゲームとそのシステムを設計・開発しています。UE5 C++、戦闘アーキテクチャ、3Dアセットパイプラインを専門としており、
+      現在はインディーターン制戦術ローグライトを個人開発中です。
     </p>
   </section>
 
@@ -600,15 +600,13 @@
         <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
       </svg>
     </div>
-    <div class="section-label">About</div>
+    <div class="section-label">自己紹介</div>
     <div class="about-body">
       <p>
-        10+ years in full-stack engineering across web services and backend systems,
-        now focused on game development. Working in UE5 C++ with a focus on combat systems,
-        ability architecture, and custom action frameworks.
+        Webサービスおよびバックエンドシステムでのフルスタックエンジニアとして10年以上の実務経験を持ち、現在はゲーム開発に注力しています。UE5 C++を使用し、戦闘システム・アビリティアーキテクチャ・カスタムアクションフレームワークの設計・実装を行っています。
       </p>
       <p>
-        Parallel focus on 3D modeling, texturing, and asset pipelines for real-time environments.
+        並行して3Dモデリング・テクスチャリング・リアルタイム環境向けアセットパイプラインにも取り組んでいます。
       </p>
     </div>
     <div class="tag-row">
@@ -629,7 +627,7 @@
         <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
       </svg>
     </div>
-    <div class="section-label">Current Project</div>
+    <div class="section-label">制作中のプロジェクト</div>
 
     <div class="project-card">
       <!-- Thumbnail: swap the placeholder div for an <img> when ready -->
@@ -639,37 +637,33 @@
 
       <div class="project-body">
         <h2 class="project-name">Wanderers of the Mist</h2>
-        <p class="project-sub">Turn-based tactical roguelite &mdash; UE5 C++ &mdash; In development</p>
+        <p class="project-sub">ターン制戦術ローグライト &mdash; UE5 C++ &mdash; 開発中</p>
 
         <p class="project-desc">
-          A 2v2 positional combat system built around front/back slot mechanics and a custom
-          ability action system. Two playable characters
-          with transformable weapons and a token-based status system driving cross-unit
-          combo chains. Combat design is currently in active playtesting and subject to change.
+          フロント/バックのスロットメカニクスとカスタムアビリティアクションシステムを軸にした2対2の陣形戦闘システムです。変形可能な武器を持つ2体の操作キャラクターと、ユニット間のコンボチェーンを駆動するトークンベースのステータスシステムを採用しています。戦闘デザインは現在プレイテスト中のため、仕様は変更される可能性があります。
         </p>
 
         <div class="project-meta">
           <span class="tag">UE5 C++</span>
-          <span class="tag">Custom Action System</span>
-          <span class="tag">Token-Based Combat</span>
-          <span class="tag">Turn-Based</span>
-          <span class="tag">Roguelite</span>
+          <span class="tag">カスタムアクションシステム</span>
+          <span class="tag">トークンベース戦闘</span>
+          <span class="tag">ターン制</span>
+          <span class="tag">ローグライト</span>
         </div>
 
         <!-- ROADMAP -->
         <div class="roadmap">
-          <div class="roadmap-title">Development Roadmap</div>
-          <p class="project-desc">Development is subject to change based on feedback and market conditions.</p>
+          <div class="roadmap-title">開発ロードマップ</div>
+          <p class="project-desc">フィードバックおよび市場状況により、開発内容は変更される可能性があります。</p>
           <div class="roadmap-list">
 
             <div class="roadmap-item">
               <div class="roadmap-date">2026.06–07</div>
               <div class="roadmap-dot active"></div>
               <div class="roadmap-content">
-                <strong>Combat System</strong>
-                Core combat loop: 2 weapons, 2 player characters, 2 enemies.
-                Token system, positional mechanics, basic UI, playtesting, and refinement.
-                <div class="roadmap-note">Ongoing: market research and value curve analysis to validate commercial direction.</div>
+                <strong>戦闘システム</strong>
+                コア戦闘ループ：武器2種、プレイアブルキャラクター2体、敵2体。トークンシステム、陣形メカニクス、基本UI、プレイテスト、調整。
+                <div class="roadmap-note">継続中：商業的方向性の検証のため、市場調査および価値カーブ分析を実施中。</div>
               </div>
             </div>
 
@@ -677,8 +671,8 @@
               <div class="roadmap-date">2026.08</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Combat UI</strong>
-                Full combat UI design pass. Action feedback, readability. Playtesting and refinement.
+                <strong>戦闘UI</strong>
+                戦闘UIの全面デザイン。アクションフィードバックと視認性の改善。プレイテストと調整。
               </div>
             </div>
 
@@ -686,8 +680,8 @@
               <div class="roadmap-date">2026.09</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Enemy AI</strong>
-                State Tree implementation for 2 enemies. Playtesting and refinement.
+                <strong>敵AI</strong>
+                2体の敵にState Treeを実装。プレイテストと調整。
               </div>
             </div>
 
@@ -695,8 +689,8 @@
               <div class="roadmap-date">2026.10</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Map Traversal</strong>
-                Node-based map system, basic events, map UI. Integration playtesting with combat loop.
+                <strong>マップ移動</strong>
+                ノードベースのマップシステム、基本イベント、マップUI。戦闘ループとの統合プレイテスト。
               </div>
             </div>
 
@@ -704,9 +698,8 @@
               <div class="roadmap-date">2026.12–2027.01</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>First Polish Pass</strong>
-                Visual and audio pass using premade assets and SFX as a base, customized where needed.
-                Premade animations. Playtesting and refinement.
+                <strong>初期クオリティアップ</strong>
+                既製アセットとSFXを基にビジュアルおよびオーディオを調整・カスタマイズ。既製アニメーションを使用。プレイテストと調整。
               </div>
             </div>
 
@@ -714,9 +707,8 @@
               <div class="roadmap-date">2027.02-03</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Enemy Roster and Frontend</strong>
-                Start menu, options, save/load system.
-                Additional enemies to complete a full single run. Playtesting.
+                <strong>敵の追加とフロントエンド</strong>
+                スタートメニュー、設定、セーブ/ロードシステム。1回のランを完成させるための追加敵。プレイテスト。
               </div>
             </div>
 
@@ -724,10 +716,8 @@
               <div class="roadmap-date">2027.03-04</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Performance Review, Testing, and Early Release — v0.1</strong>
-                Performance checks with Unreal Insights, testing in different hardware configurations.
-                Early release on itch.io, Steam, and other PC platforms.
-                Testing and refinement continue, toward a full release.
+                <strong>パフォーマンス確認・テスト・早期リリース — v0.1</strong>
+                Unreal Insightsによるパフォーマンス確認、各種ハード構成でのテスト。itch.io、Steam等のPCプラットフォームにて早期リリース。正式リリースに向けてテストと調整を継続。
               </div>
             </div>
 
@@ -735,9 +725,8 @@
               <div class="roadmap-date">2027.Q4</div>
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
-                <strong>Full Release</strong>
-                Final polish and bug fixes.
-                Community engagement and support.
+                <strong>正式リリース</strong>
+                最終仕上げとバグ修正。コミュニティへの対応とサポート。
               </div>
             </div>
 
@@ -750,8 +739,8 @@
       <div class="card-video">
         <div class="card-video-header" onclick="toggleVideo(this)">
           <div>
-            <div class="card-video-label">Prototype Video</div>
-            <div class="card-video-title">Combat system walkthrough — work in progress</div>
+            <div class="card-video-label">プロトタイプ動画</div>
+            <div class="card-video-title">戦闘システムの紹介 — 開発中</div>
           </div>
           <span class="card-video-toggle">▼</span>
         </div>
@@ -767,7 +756,7 @@
           -->
           <div class="video-placeholder">
             <div class="video-placeholder-inner">
-              <span>Video — Coming Soon</span>
+              <span>動画 — 近日公開</span>
             </div>
           </div>
         </div>
@@ -777,23 +766,18 @@
 
     <!-- ARCHITECTURE -->
     <div class="arch-block">
-      <div class="section-label">System Architecture</div>
+      <div class="section-label">システムアーキテクチャ</div>
       <!-- Replace this placeholder with your exported Draw.io diagram -->
       <div class="arch-diagram-placeholder">
-        <span>Architecture Diagram — Placeholder</span>
+        <span>アーキテクチャ図 — 仮</span>
       </div>
       <p class="arch-desc">
-        The combat pipeline runs from a central <code>BattleBoard</code> through a
-        <code>TurnHandler</code> and <code>ActionSystemComponent</code> to a static
-        <code>TokenResolver</code>. Status token changes bubble up via attribute
-        delegates to a UI update layer, avoiding polling. Positional state
-        is stamped directly onto unit Ability System Components at slot assignment.
-
+        戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝播するため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
       </p>
       <a class="big-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/wanderers/architecture.md" target="_blank" rel="noopener">
         <div class="big-link-body">
-          <div class="big-link-name">Full Diagram — GitHub</div>
-          <div class="big-link-desc">Brief explanation with interactive diagram</div>
+          <div class="big-link-name">図の詳細 — GitHub</div>
+          <div class="big-link-desc">インタラクティブ図付きの解説</div>
         </div>
         <span class="big-link-arrow">→</span>
       </a>
@@ -810,7 +794,7 @@
         <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
       </svg>
     </div>
-    <div class="section-label">Art &amp; 3D Work</div>
+    <div class="section-label">アート・3D制作物</div>
     <div class="art-grid">
       <div class="art-cell"><span class="art-cell-label">Image</span></div>
       <div class="art-cell"><span class="art-cell-label">Image</span></div>
@@ -819,11 +803,11 @@
       <div class="art-cell"><span class="art-cell-label">Image</span></div>
       <div class="art-cell"><span class="art-cell-label">Image</span></div>
     </div>
-    <p class="art-caption">3D modeling and texturing. Tools: Blender, Maya, Substance Painter.</p>
+    <p class="art-caption">3Dモデリングとテクスチャリング。使用ツール：Blender、Maya、Substance Painter。</p>
   </section>
 
   <footer>
-    <p>Updated 2026/07/08</p>
+    <p>更新日：2026/07/08</p>
   </footer>
 
 </main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CM — ゲームデベロッパー</title>
+  <title>モンテロンゴ　セサル — ゲームデベロッパー</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -432,8 +432,29 @@
       font-size: 1rem;
       line-height: 1.8;
       color: var(--text-soft);
-      margin-bottom: 1.6rem;
     }
+
+    /* ── CARD LINK ROW ── */
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.4rem;
+      background: var(--surface-hi);
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .card-link:hover { background: #332d47; }
+    .card-link-arrow {
+      font-size: 1rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+    .card-link:hover .card-link-arrow { color: var(--gold); transform: translateX(4px); }
 
     /* ── BIG LINK BUTTON ── */
     .big-link {
@@ -553,7 +574,7 @@
       .project-body { padding: 1.5rem; }
       .card-video-header { padding: 1rem 1.5rem; }
       .card-video-body { padding: 0 1.5rem 1.5rem; }
-      .arch-block { padding: 1.5rem; }
+      .card-link { padding: 1rem 1.5rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -746,7 +767,47 @@
         </div>
         <div class="card-video-body" style="display:none;">
           <!--
-            Replace VIDEO_ID with your unlisted YouTube video ID.
+            Replace VIDEO_ID with video ID / link.
+            Unlisted videos embed without login requirement.
+          -->
+          <div class="video-embed">
+            <div style="position:relative; width:100%; height:0px; padding-bottom:66.298%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/ell8rd?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+          </div>
+<!--          <div class="video-placeholder">-->
+<!--            <div class="video-placeholder-inner">-->
+<!--              <span>動画 — 近日公開</span>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+
+    </div><!-- /.project-card -->
+
+    <!-- ARCHITECTURE -->
+    <div class="project-card">
+      <div class="project-body">
+        <div class="section-label">システムアーキテクチャ</div>
+        <!-- Replace this placeholder with your exported Draw.io diagram -->
+        <div class="arch-diagram-placeholder">
+          <span>アーキテクチャ図 — 仮</span>
+        </div>
+        <p class="arch-desc">
+          戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝播するため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
+        </p>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="card-video">
+        <div class="card-video-header" onclick="toggleVideo(this)">
+          <div>
+            <div class="card-video-label">コード解説動画</div>
+            <div class="card-video-title">エディタ内でのシステム構造 — 開発中</div>
+          </div>
+          <span class="card-video-toggle">▼</span>
+        </div>
+        <div class="card-video-body" style="display:none;">
+          <!--
+            Replace VIDEO_ID with the editor/code walkthrough video ID.
             Unlisted videos embed without login requirement.
           -->
           <!--
@@ -762,24 +823,13 @@
         </div>
       </div>
 
-    </div><!-- /.project-card -->
-
-    <!-- ARCHITECTURE -->
-    <div class="arch-block">
-      <div class="section-label">システムアーキテクチャ</div>
-      <!-- Replace this placeholder with your exported Draw.io diagram -->
-      <div class="arch-diagram-placeholder">
-        <span>アーキテクチャ図 — 仮</span>
-      </div>
-      <p class="arch-desc">
-        戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝播するため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
-      </p>
-      <a class="big-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/wanderers/architecture.md" target="_blank" rel="noopener">
-        <div class="big-link-body">
-          <div class="big-link-name">図の詳細 — GitHub</div>
-          <div class="big-link-desc">インタラクティブ図付きの解説</div>
+      <!-- GITHUB LINK -->
+      <a class="card-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/wanderers/architecture.md" target="_blank" rel="noopener">
+        <div>
+          <div class="card-video-label">コードリファレンス</div>
+          <div class="card-video-title">図の詳細 — GitHub</div>
         </div>
-        <span class="big-link-arrow">→</span>
+        <span class="card-link-arrow">→</span>
       </a>
     </div>
 

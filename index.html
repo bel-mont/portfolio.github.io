@@ -509,7 +509,7 @@
     }
 
     .art-cell {
-      aspect-ratio: 1;
+      aspect-ratio: 16 / 9;
       background: var(--surface);
       border: 1px solid var(--border);
       display: flex;
@@ -519,7 +519,10 @@
       overflow: hidden;
       cursor: pointer;
       border-radius: var(--radius);
+      transition: border-color 0.2s;
     }
+
+    .art-cell:hover { border-color: var(--border-hi); }
 
     .art-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -545,6 +548,158 @@
       color: var(--muted);
       font-family: var(--font-mono);
       letter-spacing: 0.03em;
+    }
+
+    /* ── CLICKABLE IMAGE WRAPPER ── */
+    .arch-diagram-img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background: #1e1830;
+      border: 1px solid var(--border);
+      margin: 1.2rem 0 1.6rem;
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+      display: block;
+    }
+
+    .arch-diagram-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.25s;
+    }
+
+    .arch-diagram-img:hover img { filter: brightness(1.08); }
+
+    .img-zoom-hint {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      background: rgba(20, 16, 34, 0.72);
+      padding: 0.18rem 0.42rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      border-radius: var(--radius);
+    }
+
+    .arch-diagram-img:hover .img-zoom-hint { opacity: 1; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 16, 34, 0.95);
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      background: #1a1530;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lb-img {
+      display: block;
+      max-width: min(88vw, 960px);
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lb-placeholder {
+      width: min(56vw, 500px);
+      height: min(32vh, 320px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-placeholder span {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6a6090;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      z-index: 2;
+      top: 1rem;
+      right: 1rem;
+      background: var(--surface-hi);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      padding: 0.35rem 0.55rem;
+      line-height: 1;
+      transition: color 0.2s, border-color 0.2s;
+      border-radius: var(--radius);
+    }
+    .lightbox-close:hover { color: var(--text); border-color: var(--gold); }
+
+    .lightbox-btn {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(42, 37, 64, 0.85);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+      line-height: 1;
+    }
+    .lightbox-btn:hover { color: var(--text); border-color: var(--gold); background: rgba(51, 45, 71, 0.98); }
+
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+
+    .lightbox-counter {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      min-height: 1.2em;
+      text-align: center;
     }
 
     /* ── RESPONSIVE ── */
@@ -788,9 +943,9 @@
     <div class="project-card">
       <div class="project-body">
         <div class="section-label">システムアーキテクチャ</div>
-        <!-- Replace this placeholder with your exported Draw.io diagram -->
-        <div class="arch-diagram-placeholder">
-          <span>アーキテクチャ図 — 仮</span>
+        <div class="arch-diagram-img" onclick="openLightbox([{src:'wanderers/img/diagram.png',alt:'アーキテクチャ図'}],0)">
+          <img src="wanderers/img/diagram.png" alt="Wanderers of the Mist Simplified Architecture Diagram" />
+          <span class="img-zoom-hint">クリックで拡大</span>
         </div>
         <p class="arch-desc">
           戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝播するため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
@@ -839,12 +994,12 @@
     </div>
     <div class="section-label">アート・3D制作物</div>
     <div class="art-grid">
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
-      <div class="art-cell"><span class="art-cell-label">Image</span></div>
+      <div class="art-cell" onclick="openArtLightbox(0)"><img src="wanderers/img/renders/Locker1.webp" alt="Locker 1 Render"></div>
+      <div class="art-cell" onclick="openArtLightbox(1)"><img src="wanderers/img/renders/Locker2.webp" alt="Locker 2 Render"></div>
+      <div class="art-cell" onclick="openArtLightbox(2)"><img src="wanderers/img/renders/Locker6.webp" alt="Locker 3 Render"></div>
+      <div class="art-cell" onclick="openArtLightbox(3)"><img src="wanderers/img/renders/Misericorde.webp" alt="Locker 4 Render"></div>
+      <div class="art-cell" onclick="openArtLightbox(4)"><img src="wanderers/img/renders/Misericorde2.webp" alt="Locker 5 Render"></div>
+      <div class="art-cell" onclick="openArtLightbox(5)"><img src="wanderers/img/renders/Misericorde3.webp" alt="Locker 5 Render"></div>
     </div>
     <p class="art-caption">3Dモデリング。使用ツール：Blender、Maya。</p>
   </section>
@@ -878,7 +1033,95 @@
     body.style.display = open ? 'none' : 'block';
     arrow.style.transform = open ? '' : 'rotate(180deg)';
   }
+
+  // ── LIGHTBOX ──
+  let _lb;
+  let _lbImages = [];
+  let _lbIdx = 0;
+
+  function _getLb() { return _lb || (_lb = document.getElementById('lightbox')); }
+
+  const artImages = [
+    { src: 'wanderers/img/renders/Locker1.webp', alt: 'Locker 1 Render' },
+    { src: 'wanderers/img/renders/Locker2.webp', alt: 'Locker 2 Render' },
+    { src: 'wanderers/img/renders/Locker6.webp', alt: 'Locker 3 Render' },
+    { src: 'wanderers/img/renders/Misericorde.webp', alt: 'Locker 4 Render' },
+    { src: 'wanderers/img/renders/Misericorde2.webp', alt: 'Locker 5 Render' },
+    { src: 'wanderers/img/renders/Misericorde3.webp', alt: 'Locker 6 Render' },
+  ];
+
+  function openLightbox(images, startIndex) {
+    _lbImages = images;
+    _lbIdx = startIndex || 0;
+    _renderLb();
+    _getLb().style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openArtLightbox(index) {
+    openLightbox(artImages, index);
+  }
+
+  function closeLightbox() {
+    _getLb().style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function lightboxNav(dir) {
+    _lbIdx = (_lbIdx + dir + _lbImages.length) % _lbImages.length;
+    _renderLb();
+  }
+
+  function _renderLb() {
+    const img     = document.getElementById('lb-img');
+    const ph      = document.getElementById('lb-ph');
+    const counter = document.getElementById('lb-counter');
+    const prev    = document.getElementById('lb-prev');
+    const next    = document.getElementById('lb-next');
+    const cur     = _lbImages[_lbIdx];
+
+    if (cur && cur.src) {
+      img.src = cur.src;
+      img.alt = cur.alt || '';
+      img.style.display = 'block';
+      ph.style.display  = 'none';
+    } else {
+      img.style.display = 'none';
+      ph.style.display  = 'flex';
+    }
+
+    const multi = _lbImages.length > 1;
+    prev.style.display    = multi ? 'flex' : 'none';
+    next.style.display    = multi ? 'flex' : 'none';
+    counter.textContent   = multi ? (_lbIdx + 1) + ' / ' + _lbImages.length : '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lb = _getLb();
+    if (!lb || lb.style.display === 'none') return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   lightboxNav(-1);
+    if (e.key === 'ArrowRight')  lightboxNav(1);
+  });
 </script>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" style="display:none">
+  <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div class="lightbox-content">
+    <div class="lightbox-stage">
+      <img id="lb-img" src="" alt="" style="display:none">
+      <div id="lb-ph" class="lb-placeholder" style="display:none">
+        <span>Image</span>
+      </div>
+      <button id="lb-prev" class="lightbox-btn lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+      <button id="lb-next" class="lightbox-btn lightbox-next" onclick="lightboxNav(1)">›</button>
+    </div>
+    <div id="lb-counter" class="lightbox-counter"></div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -536,6 +536,12 @@
 
     .art-caption { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 0.9rem; }
 
+    .art-group-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
     /* ── LINKS SECTION ── */
     .links-grid { display: flex; flex-direction: column; gap: 0.65rem; }
 
@@ -992,21 +998,39 @@
         <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
       </svg>
     </div>
-    <div class="section-label">アート・3D制作物</div>
+    <div class="section-label">アート・3D</div>
     <p class="art-caption" style="margin-top:0.6rem;margin-bottom:0.9rem;">※ 掲載している3Dモデルは、ゲーム開発作品とは必ずしも関連していません。</p>
-    <div class="art-grid">
-      <div class="art-cell" onclick="openArtLightbox(0)"><img src="wanderers/img/renders/Locker1.webp" alt="Locker 1 Render"></div>
-      <div class="art-cell" onclick="openArtLightbox(1)"><img src="wanderers/img/renders/Locker2.webp" alt="Locker 2 Render"></div>
-      <div class="art-cell" onclick="openArtLightbox(2)"><img src="wanderers/img/renders/Locker6.webp" alt="Locker 3 Render"></div>
-      <div class="art-cell" onclick="openArtLightbox(3)"><img src="wanderers/img/renders/Misericorde.webp" alt="Locker 4 Render"></div>
-      <div class="art-cell" onclick="openArtLightbox(4)"><img src="wanderers/img/renders/Misericorde2.webp" alt="Locker 5 Render"></div>
-      <div class="art-cell" onclick="openArtLightbox(5)"><img src="wanderers/img/renders/Misericorde3.webp" alt="Locker 5 Render"></div>
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="section-label">アールデコ風のロッカー — デザインの試作</div>
+        <p class="arch-desc" style="margin:0.45rem 0 0.25rem;">
+          アールデコの要素を使って、自由なデザインの試作。完成品ではなく、実験的な作品。</p>
+        <p class="roadmap-note" style="margin-bottom:1rem;">使用ツール：Maya</p>
+        <div class="art-grid">
+          <div class="art-cell" onclick="openArtLightbox(0)"><img src="wanderers/img/renders/Locker1.webp" alt="Locker 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(1)"><img src="wanderers/img/renders/Locker2.webp" alt="Locker 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(2)"><img src="wanderers/img/renders/Locker6.webp" alt="Locker 3 Render"></div>
+        </div>
+
+        <hr class="art-group-divider">
+
+        <div class="section-label">ミゼリコルデ短剣 — 参考レプリカ</div>
+        <p class="arch-desc" style="margin:0.45rem 0 0.25rem;">
+          錆びたドイツの短剣(ミゼリコルデ)を参考にしたレプリカ。傷や壊れた感じにアレンジ。オリジナルのデザインではなく、構造を学ぶ目的。
+        </p>
+        <p class="roadmap-note" style="margin-bottom:1rem;">使用ツール：Blender</p>
+        <div class="art-grid">
+          <div class="art-cell" onclick="openArtLightbox(3)"><img src="wanderers/img/renders/Misericorde.webp" alt="Misericorde 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(4)"><img src="wanderers/img/renders/Misericorde2.webp" alt="Misericorde 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(5)"><img src="wanderers/img/renders/Misericorde3.webp" alt="Misericorde 3 Render"></div>
+        </div>
+      </div>
     </div>
-    <p class="art-caption">3Dモデリング。使用ツール：Blender、Maya。</p>
   </section>
 
   <footer>
-    <p>更新日：2026/07/10</p>
+    <p>更新日：2026/07/11</p>
   </footer>
 
 </main>
@@ -1046,9 +1070,9 @@
     { src: 'wanderers/img/renders/Locker1.webp', alt: 'Locker 1 Render' },
     { src: 'wanderers/img/renders/Locker2.webp', alt: 'Locker 2 Render' },
     { src: 'wanderers/img/renders/Locker6.webp', alt: 'Locker 3 Render' },
-    { src: 'wanderers/img/renders/Misericorde.webp', alt: 'Locker 4 Render' },
-    { src: 'wanderers/img/renders/Misericorde2.webp', alt: 'Locker 5 Render' },
-    { src: 'wanderers/img/renders/Misericorde3.webp', alt: 'Locker 6 Render' },
+    { src: 'wanderers/img/renders/Misericorde.webp', alt: 'Misericorde 1 Render' },
+    { src: 'wanderers/img/renders/Misericorde2.webp', alt: 'Misericorde 2 Render' },
+    { src: 'wanderers/img/renders/Misericorde3.webp', alt: 'Misericorde 3 Render' },
   ];
 
   function openLightbox(images, startIndex) {

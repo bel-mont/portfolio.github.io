@@ -1,0 +1,26 @@
+﻿#pragma once
+#include "NativeGameplayTags.h"
+
+namespace NG2GameplayTags
+{
+	// NG2_API optional
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_Jump)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_AttackLight)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_AttackHeavy)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_AttackHeavyHold)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_MeleeExecution)
+	
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Jumping)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Landing)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Attacking)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_AirAttacking)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Combo_InputWindow)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Combo_AttackWindow)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Staggered)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_KnockedDown)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_Invincible)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(State_MovementBlocked)
+	
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Combo_Chain)
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Landed)
+}

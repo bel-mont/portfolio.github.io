@@ -708,6 +708,60 @@
       text-align: center;
     }
 
+    /* ── DEBUG LEGEND ── */
+    .debug-legend {
+      margin-top: 1.4rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+
+    .debug-legend-title {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .debug-legend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .debug-legend-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .debug-swatch {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.18);
+      flex-shrink: 0;
+      position: relative;
+      top: 0.07em;
+    }
+
+    .debug-legend-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 1.1rem;
+      line-height: 1.85;
+      border-left: 2px solid var(--border);
+      padding-left: 0.9rem;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       :root { --nav-w: 0px; }
@@ -787,10 +841,10 @@
     <div class="section-label">自己紹介</div>
     <div class="about-body">
       <p>
-        Webサービスおよびバックエンドシステムでのフルスタックエンジニアとして10年以上の実務経験を持ち、現在はゲーム開発に注力しています。UE5 C++を使用し、戦闘システム・アビリティアーキテクチャ・カスタムアクションフレームワークの設計・実装を行っています。
+        Webサービスおよびバックエンドシステムでのフルスタックエンジニアとして10年以上の実務経験を持ち、現在はゲーム開発に力を入れています。UE5 C++を使用し、戦闘システム・アビリティアーキテクチャ・カスタムアクションフレームワークの設計・実装を行っています。
       </p>
       <p>
-        並行して3Dモデリング・テクスチャリング・リアルタイム環境向けアセットパイプラインにも取り組んでいます。
+        同時に3Dモデリング・テクスチャリング・リアルタイム環境向けアセットパイプラインにも取り組んでいます。
       </p>
     </div>
     <div class="tag-row">
@@ -824,7 +878,7 @@
         <p class="project-sub">ターン制戦術ローグライト &mdash; UE5 C++ &mdash; 開発中</p>
 
         <p class="project-desc">
-          フロント/バックのスロットメカニクスとカスタムアビリティアクションシステムを軸にした2対2の陣形戦闘システムです。変形可能な武器を持つ2体の操作キャラクターと、ユニット間のコンボチェーンを駆動するトークンベースのステータスシステムを採用しています。戦闘デザインは現在プレイテスト中のため、仕様は変更される可能性があります。
+          フロント/バックのスロットメカニクスとカスタムアビリティアクションシステムを軸にした2対2の陣形戦闘システムです。変形可能な武器を持つ2体の操作キャラクターと、ユニット間のコンボチェーンを動かすトークンベースのステータスシステムを使っています。戦闘デザインは現在プレイテスト中のため、仕様は変更される可能性があります。
         </p>
 
         <div class="project-meta">
@@ -855,7 +909,7 @@
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
                 <strong>戦闘UI</strong>
-                戦闘UIの全面デザイン。アクションフィードバックと視認性の改善。プレイテストと調整。
+                戦闘UIの全面デザイン。アクションフィードバックと見やすさの改善。プレイテストと調整。
               </div>
             </div>
 
@@ -882,7 +936,7 @@
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
                 <strong>初期クオリティアップ</strong>
-                既製アセットとSFXを基にビジュアルおよびオーディオを調整・カスタマイズ。既製アニメーションを使用。プレイテストと調整。
+                既存のアセットとSFXを基にビジュアルとオーディオを調整・カスタマイズ。既存のアニメーションを使用。プレイテストと調整。
               </div>
             </div>
 
@@ -900,7 +954,7 @@
               <div class="roadmap-dot"></div>
               <div class="roadmap-content">
                 <strong>パフォーマンス確認・テスト・早期リリース — v0.1</strong>
-                Unreal Insightsによるパフォーマンス確認、各種ハード構成でのテスト。itch.io、Steam等のPCプラットフォームにて早期リリース。正式リリースに向けてテストと調整を継続。
+                Unreal Insightsによるパフォーマンス確認、様々なハード構成でのテスト。itch.io、Steam等のPCプラットフォームにて早期リリース。正式リリースに向けてテストと調整を継続。
               </div>
             </div>
 
@@ -954,7 +1008,7 @@
           <span class="img-zoom-hint">クリックで拡大</span>
         </div>
         <p class="arch-desc">
-          戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝播するため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
+          戦闘パイプラインは中央の <code>BattleBoard</code> から始まり、<code>TurnHandler</code> と <code>ActionSystemComponent</code> を経由して静的な <code>TokenResolver</code> に接続されます。ステータストークンの変化はアトリビュートデリゲートを通じてUIレイヤーへ伝わるため、ポーリングが不要です。スロット割り当て時に陣形情報が各ユニットの Ability System Component へ直接書き込まれます。
         </p>
       </div>
 
@@ -989,6 +1043,80 @@
 
   </section>
 
+  <!-- ACTION PROTOTYPE -->
+  <div class="project-card" style="margin-top:1.5rem;">
+    <div class="project-body">
+      <div class="section-label">リアルタイム戦闘システム — 技術検証</div>
+      <h2 class="project-name">忍者外伝2風アクションプロトタイプ</h2>
+      <p class="project-sub">中断済み・未完成リアルタイムアクション検証 &mdash; UE5 C++ &mdash; ターン制ローグライトへの方向転換前に開発</p>
+
+      <p class="project-desc">
+        忍者外伝2のリアルタイム戦闘を参考に、コア技術が実現できるかを確かめたプロトタイプです。インプットバッファリング、アニメーション駆動の攻撃ウィンドウ、AnimNotifyStateによるGASアビリティ起動をUE5 C++で実装しました。完成には至らず、スコープを絞った出荷可能なターン制ローグライトプロジェクトへの移行に際し、意図的に開発を中断しました。未完成は失敗ではなく、現実的な優先順位の判断によるものです
+      </p>
+
+      <div class="project-meta">
+        <span class="tag">UE5 C++</span>
+        <span class="tag">Gameplay Ability System</span>
+        <span class="tag">アニメーションブループリント</span>
+        <span class="tag">コンボシステム</span>
+        <span class="tag">インプットバッファリング</span>
+      </div>
+    </div>
+
+    <div class="card-video">
+      <div class="card-video-header" onclick="toggleVideo(this)">
+        <div>
+          <div class="card-video-label">デバッグ動画</div>
+          <div class="card-video-title">コンボ入力ウィンドウのデバッグ表示 — スロー再生</div>
+        </div>
+        <span class="card-video-toggle">▼</span>
+      </div>
+      <div class="card-video-body" style="display:none;">
+        <div class="video-embed">
+          <div style="position:relative; width:100%; height:0px; padding-bottom:60.504%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/iyjno2?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+        </div>
+
+        <div class="debug-legend">
+          <div class="debug-legend-title">カラー凡例</div>
+          <ul class="debug-legend-list">
+            <li><span class="debug-swatch" style="background:#ffffff;"></span>白 — 待機状態。何も発生していない。</li>
+            <li><span class="debug-swatch" style="background:#cc3333;"></span>赤 — アニメーション再生中。入力を受け付けない。</li>
+            <li><span class="debug-swatch" style="background:#ddbb44;"></span>黄 — 入力バッファウィンドウ。次のアニメーションが始まる前に、入力を行ったり変更したりできる。</li>
+            <li><span class="debug-swatch" style="background:#44aa55;"></span>緑 — 次の攻撃ウィンドウ。</li>
+          </ul>
+          <p class="debug-legend-note">
+            赤の間は上で説明した通り一切の操作を受け付けません。緑は次の攻撃が実際に再生されるタイミングですが、これは正しい入力が事前に行われている場合に限られます。緑のウィンドウ内であればいつでも次の入力を行うことができ、このタイミングを逃すとコンボは終了し、多くの場合そのまま赤（操作不能なアニメーション）へと変わります。<br><br>
+            黄のバッファウィンドウでは、最後に入力された正しいボタンを覚えておきます。アニメーションが緑の攻撃ウィンドウに着いたときにバッファされた入力があれば、それが自動的に発動します。正しい入力と誤った入力の両方がバッファされた場合は、最後に入力された正しいものを優先します。
+          </p>
+        </div>
+      </div>
+    </div>
+
+<!--    <div class="card-video">-->
+<!--      <div class="card-video-header" onclick="toggleVideo(this)">-->
+<!--        <div>-->
+<!--          <div class="card-video-label">システム構成動画</div>-->
+<!--          <div class="card-video-title">Animation Blueprint ステートマシン &amp; GAS アビリティ構成</div>-->
+<!--        </div>-->
+<!--        <span class="card-video-toggle">▼</span>-->
+<!--      </div>-->
+<!--      <div class="card-video-body" style="display:none;">-->
+<!--        <div class="video-embed">-->
+<!--          <iframe allow="fullscreen" allowfullscreen src="PLACEHOLDER_VIDEO_URL" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <!-- CODE SAMPLES LINK -->
+    <a class="card-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/ng_proto2/" target="_blank" rel="noopener">
+      <div>
+        <div class="card-video-label">コードサンプル</div>
+        <div class="card-video-title">実装の詳細 — GitHub</div>
+      </div>
+      <span class="card-link-arrow">→</span>
+    </a>
+  </div>
+
   <!-- ART -->
   <section id="art">
     <div class="ornament">
@@ -1008,9 +1136,9 @@
           アールデコの要素を使って、自由なデザインの試作。完成品ではなく、実験的な作品。</p>
         <p class="roadmap-note" style="margin-bottom:1rem;">使用ツール：Maya</p>
         <div class="art-grid">
-          <div class="art-cell" onclick="openArtLightbox(0)"><img src="wanderers/img/renders/Locker1.webp" alt="Locker 1 Render"></div>
-          <div class="art-cell" onclick="openArtLightbox(1)"><img src="wanderers/img/renders/Locker2.webp" alt="Locker 2 Render"></div>
-          <div class="art-cell" onclick="openArtLightbox(2)"><img src="wanderers/img/renders/Locker6.webp" alt="Locker 3 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(0)"><img src="img/renders/Locker1.webp" alt="Locker 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(1)"><img src="img/renders/Locker2.webp" alt="Locker 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(2)"><img src="img/renders/Locker6.webp" alt="Locker 3 Render"></div>
         </div>
 
         <hr class="art-group-divider">
@@ -1021,16 +1149,16 @@
         </p>
         <p class="roadmap-note" style="margin-bottom:1rem;">使用ツール：Blender</p>
         <div class="art-grid">
-          <div class="art-cell" onclick="openArtLightbox(3)"><img src="wanderers/img/renders/Misericorde.webp" alt="Misericorde 1 Render"></div>
-          <div class="art-cell" onclick="openArtLightbox(4)"><img src="wanderers/img/renders/Misericorde2.webp" alt="Misericorde 2 Render"></div>
-          <div class="art-cell" onclick="openArtLightbox(5)"><img src="wanderers/img/renders/Misericorde3.webp" alt="Misericorde 3 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(3)"><img src="img/renders/Misericorde.webp" alt="Misericorde 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(4)"><img src="img/renders/Misericorde2.webp" alt="Misericorde 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(5)"><img src="img/renders/Misericorde3.webp" alt="Misericorde 3 Render"></div>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>更新日：2026/07/11</p>
+    <p>更新日：2026/07/17</p>
   </footer>
 
 </main>
@@ -1067,12 +1195,12 @@
   function _getLb() { return _lb || (_lb = document.getElementById('lightbox')); }
 
   const artImages = [
-    { src: 'wanderers/img/renders/Locker1.webp', alt: 'Locker 1 Render' },
-    { src: 'wanderers/img/renders/Locker2.webp', alt: 'Locker 2 Render' },
-    { src: 'wanderers/img/renders/Locker6.webp', alt: 'Locker 3 Render' },
-    { src: 'wanderers/img/renders/Misericorde.webp', alt: 'Misericorde 1 Render' },
-    { src: 'wanderers/img/renders/Misericorde2.webp', alt: 'Misericorde 2 Render' },
-    { src: 'wanderers/img/renders/Misericorde3.webp', alt: 'Misericorde 3 Render' },
+    { src: '/img/renders/Locker1.webp', alt: 'Locker 1 Render' },
+    { src: '/img/renders/Locker2.webp', alt: 'Locker 2 Render' },
+    { src: '/img/renders/Locker6.webp', alt: 'Locker 3 Render' },
+    { src: '/img/renders/Misericorde.webp', alt: 'Misericorde 1 Render' },
+    { src: '/img/renders/Misericorde2.webp', alt: 'Misericorde 2 Render' },
+    { src: '/img/renders/Misericorde3.webp', alt: 'Misericorde 3 Render' },
   ];
 
   function openLightbox(images, startIndex) {

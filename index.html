@@ -31,7 +31,10 @@
       --radius:     2px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
 
     body {
       background: var(--bg);
@@ -120,6 +123,29 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 0.5rem;
+    }
+
+    /* ── PROJECT NOTICE ── */
+    .project-notice {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--gold);
+      padding-left: 1rem;
+      margin: 1rem 0 1.8rem;
+      max-width: 600px;
+    }
+
+    .project-notice strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 0.2rem;
     }
 
     /* ── HERO ── */
@@ -866,6 +892,10 @@
       </svg>
     </div>
     <div class="section-label">制作中のプロジェクト</div>
+    <aside class="project-notice" role="note">
+      <strong>※ 本セクションはすべて開発中の内容です</strong>
+      掲載している映像・画像・仕様はいずれも最終的なものではなく、開発の進行に合わせて随時更新・変更されます。
+    </aside>
 
     <div class="project-card">
       <!-- Thumbnail: swap the placeholder div for an <img> when ready -->

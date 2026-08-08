@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montelongo Cesar — Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #2a2540;
+      --bg-mid:     #312c4a;
+      --surface:    #3a3455;
+      --surface-hi: #443e62;
+      --gold:       #D4AE58;
+      --crimson:    #B05252;
+      --text:       #F5F0E8;
+      --text-soft:  #D8CFBE;
+      --muted:      #9E94B2;
+      --border:     #524a72;
+      --border-hi:  #6a6090;
+      --font-display: 'Cinzel', 'Noto Sans JP', serif;
+      --font-body:    'Crimson Pro', 'Noto Sans JP', serif;
+      --font-ui:      'Noto Sans JP', 'Crimson Pro', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --nav-w:      210px;
+      --section-gap: 5.5rem;
+      --radius:     2px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.175rem;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--nav-w);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 2rem 2rem 2.5rem;
+      z-index: 100;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    nav .nav-name {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+
+    nav a {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    nav a::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1px;
+      background: var(--muted);
+      transition: width 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    nav a:hover, nav a.active { color: var(--text); }
+    nav a:hover::before, nav a.active::before { width: 28px; background: var(--gold); }
+
+    /* ── MAIN ── */
+    main {
+      margin-left: var(--nav-w);
+      max-width: 880px;
+      padding: 0 3rem 6rem 4rem;
+    }
+
+    /* ── ORNAMENT ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      margin: var(--section-gap) 0 2.5rem;
+      width: 100%;
+    }
+    .ornament.first { margin-top: 0; padding-top: 5.5rem; }
+    .ornament svg { flex-shrink: 0; }
+
+    /* ── LABELS ── */
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── PROJECT NOTICE ── */
+    .project-notice {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--gold);
+      padding-left: 1rem;
+      margin: 1rem 0 1.8rem;
+      max-width: 600px;
+    }
+
+    .project-notice strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── HERO ── */
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--text-soft);
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ── */
+    .about-body { font-size: 1.1rem; line-height: 1.9; max-width: 600px; color: var(--text-soft); }
+    .about-body p + p { margin-top: 1.1rem; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.6rem; }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.22rem 0.6rem;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius);
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 220px;
+      background: #1e1830;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 40px,
+              rgba(201, 168, 76, 0.018) 40px,
+              rgba(201, 168, 76, 0.018) 41px
+      );
+    }
+
+    .project-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-thumb-label {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6a6090;
+      z-index: 1;
+    }
+
+    .project-body { padding: 2.2rem 2.4rem; }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-desc {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-soft);
+      margin-bottom: 1.6rem;
+    }
+
+    .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
+
+    /* Video inside card */
+    .card-video { border-top: 1px solid var(--border); }
+
+    .card-video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.4rem;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface-hi);
+    }
+
+    .card-video-header:hover { background: #332d47; }
+
+    .card-video-label {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .card-video-title {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+    }
+
+    .card-video-toggle {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    .card-video-body { padding: 0 2.4rem 2rem; background: var(--surface); }
+
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      border: 1px solid var(--border);
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-placeholder {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: #1e1830;
+      border: 1px solid var(--border);
+      margin-top: 1.2rem;
+    }
+
+    .video-placeholder-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-placeholder-inner span {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6a6090;
+    }
+
+    /* ── ROADMAP ── */
+    .roadmap { margin-top: 1.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+
+    .roadmap-title {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: 0; }
+
+    .roadmap-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 0 1.4rem;
+      position: relative;
+      padding-bottom: 1.4rem;
+    }
+
+    .roadmap-item:last-child { padding-bottom: 0; }
+
+    .roadmap-item::before {
+      content: '';
+      position: absolute;
+      left: 144px;
+      top: 0.55rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .roadmap-item:last-child::before { display: none; }
+
+    .roadmap-date {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-top: 0.1rem;
+      padding-right: 1rem;
+      box-sizing: border-box;
+      text-align: right;
+    }
+
+    .roadmap-dot {
+      position: absolute;
+      left: 140px;
+      top: 0.52rem;
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--gold);
+      background: var(--surface);
+      transform: rotate(45deg);
+    }
+
+    .roadmap-dot.active { background: var(--gold); }
+
+    .roadmap-content {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-soft);
+      padding-left: 1rem;
+    }
+
+    .roadmap-content strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .roadmap-note {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* ── ARCHITECTURE BLOCK ── */
+    .arch-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .arch-diagram-placeholder {
+      width: 100%;
+      height: 180px;
+      background: #1e1830;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.2rem 0 1.6rem;
+    }
+
+    .arch-diagram-placeholder span {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6a6090;
+    }
+
+    .arch-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
+    /* ── CARD LINK ROW ── */
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.4rem;
+      background: var(--surface-hi);
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .card-link:hover { background: #332d47; }
+    .card-link-arrow {
+      font-size: 1rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+    .card-link:hover .card-link-arrow { color: var(--gold); transform: translateX(4px); }
+
+    /* ── BIG LINK BUTTON ── */
+    .big-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.6rem;
+      background: var(--surface-hi);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 0.75rem;
+    }
+
+    .big-link:hover { border-color: var(--gold); background: #332d47; }
+
+    .big-link-body {}
+
+    .big-link-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .big-link-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .big-link-arrow {
+      font-size: 1rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+
+    .big-link:hover .big-link-arrow { color: var(--gold); transform: translateX(4px); }
+
+    /* ── ART GRID ── */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .art-cell {
+      aspect-ratio: 16 / 9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: border-color 0.2s;
+    }
+
+    .art-cell:hover { border-color: var(--border-hi); }
+
+    .art-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .art-cell-label {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #6a6090;
+    }
+
+    .art-caption { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 0.9rem; }
+
+    .art-group-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* ── LINKS SECTION ── */
+    .links-grid { display: flex; flex-direction: column; gap: 0.65rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: var(--section-gap);
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── CLICKABLE IMAGE WRAPPER ── */
+    .arch-diagram-img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background: #1e1830;
+      border: 1px solid var(--border);
+      margin: 1.2rem 0 1.6rem;
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+      display: block;
+    }
+
+    .arch-diagram-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.25s;
+    }
+
+    .arch-diagram-img:hover img { filter: brightness(1.08); }
+
+    .img-zoom-hint {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      background: rgba(20, 16, 34, 0.72);
+      padding: 0.18rem 0.42rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      border-radius: var(--radius);
+    }
+
+    .arch-diagram-img:hover .img-zoom-hint { opacity: 1; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 16, 34, 0.95);
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      background: #1a1530;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lb-img {
+      display: block;
+      max-width: min(88vw, 960px);
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lb-placeholder {
+      width: min(56vw, 500px);
+      height: min(32vh, 320px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-placeholder span {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6a6090;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      z-index: 2;
+      top: 1rem;
+      right: 1rem;
+      background: var(--surface-hi);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      padding: 0.35rem 0.55rem;
+      line-height: 1;
+      transition: color 0.2s, border-color 0.2s;
+      border-radius: var(--radius);
+    }
+    .lightbox-close:hover { color: var(--text); border-color: var(--gold); }
+
+    .lightbox-btn {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(42, 37, 64, 0.85);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+      line-height: 1;
+    }
+    .lightbox-btn:hover { color: var(--text); border-color: var(--gold); background: rgba(51, 45, 71, 0.98); }
+
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+
+    .lightbox-counter {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      min-height: 1.2em;
+      text-align: center;
+    }
+
+    /* ── DEBUG LEGEND ── */
+    .debug-legend {
+      margin-top: 1.4rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+
+    .debug-legend-title {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .debug-legend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .debug-legend-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .debug-swatch {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.18);
+      flex-shrink: 0;
+      position: relative;
+      top: 0.07em;
+    }
+
+    .debug-legend-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 1.1rem;
+      line-height: 1.85;
+      border-left: 2px solid var(--border);
+      padding-left: 0.9rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      :root { --nav-w: 0px; }
+
+      nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        gap: 1rem;
+      }
+
+      nav .nav-name { margin-bottom: 0; }
+      nav ul { flex-direction: row; flex-wrap: wrap; gap: 0.75rem; }
+      nav a::before { display: none; }
+
+      main { margin-left: 0; padding: 0 1.4rem 4rem; }
+      .art-grid { grid-template-columns: repeat(2, 1fr); }
+      .roadmap-item { grid-template-columns: 110px 1fr; }
+      .roadmap-item::before { left: 105px; }
+      .roadmap-dot { left: 101px; }
+      .project-body { padding: 1.5rem; }
+      .card-video-header { padding: 1rem 1.5rem; }
+      .card-video-body { padding: 0 1.5rem 1.5rem; }
+      .card-link { padding: 1rem 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Portfolio</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#art">Art &amp; 3D</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="ornament first">
+      <svg width="100%" height="20" viewBox="0 0 600 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="10" x2="260" y2="10" stroke="#524a72" stroke-width="1"/>
+        <polygon points="300,2 310,10 300,18 290,10" fill="none" stroke="#D4AE58" stroke-width="1"/>
+        <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="section-label">Game Developer</div>
+    <h1 class="hero-name">Montelongo Cesar</h1>
+    <p class="hero-desc">
+      I design and develop consumer-facing games and their underlying systems. I specialize in UE5 C++, combat architecture, and 3D asset pipelines, and I am currently developing an indie turn-based roguelite as a solo project.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="ornament">
+      <svg width="100%" height="20" viewBox="0 0 600 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="10" x2="260" y2="10" stroke="#524a72" stroke-width="1"/>
+        <polygon points="300,2 310,10 300,18 290,10" fill="none" stroke="#D4AE58" stroke-width="1"/>
+        <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="section-label">About</div>
+    <div class="about-body">
+      <p>
+        I have over 10 years of experience as a full-stack engineer working on web services and backend systems, and I am now focused on game development. I use UE5 C++ to design and implement combat systems, ability architecture, and custom action frameworks.
+      </p>
+      <p>
+        I also work on 3D modeling, texturing, and asset pipelines for real-time environments.
+      </p>
+    </div>
+    <div class="tag-row">
+      <span class="tag">UE5 C++</span>
+      <span class="tag">Blender</span>
+      <span class="tag">Maya</span>
+      <span class="tag">Substance Painter</span>
+      <span class="tag">JetBrains Rider</span>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project">
+    <div class="ornament">
+      <svg width="100%" height="20" viewBox="0 0 600 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="10" x2="260" y2="10" stroke="#524a72" stroke-width="1"/>
+        <polygon points="300,2 310,10 300,18 290,10" fill="none" stroke="#D4AE58" stroke-width="1"/>
+        <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="section-label">Project in Development</div>
+    <aside class="project-notice" role="note">
+      <strong>* Everything in this section is a work in progress</strong>
+      All footage, images, and specifications shown here are not final and are subject to change as development continues.
+    </aside>
+
+    <div class="project-card">
+      <!-- Thumbnail: swap the placeholder div for an <img> when ready -->
+      <div class="project-thumb">
+        <img src="/wanderers/img/keyart.jpg?v=0.2" alt="Wanderers of the Mist Key Art">
+      </div>
+
+      <div class="project-body">
+        <h2 class="project-name">Wanderers of the Mist</h2>
+        <p class="project-sub">Turn-based tactical roguelite &mdash; UE5 C++ &mdash; In development</p>
+
+        <p class="project-desc">
+          A 2-vs-2 positional combat system built around front/back slot mechanics and a custom ability action system. Two playable characters wield transformable weapons, driven by a token-based status system that chains combos between units. The combat design is currently being playtested, so specifics are subject to change.
+        </p>
+
+        <div class="project-meta">
+          <span class="tag">UE5 C++</span>
+          <span class="tag">Custom Action System</span>
+          <span class="tag">Token-Based Combat</span>
+          <span class="tag">Roguelite</span>
+        </div>
+
+        <!-- ROADMAP -->
+        <div class="roadmap">
+          <div class="roadmap-title">Development Roadmap</div>
+          <p class="project-desc">Development plans are subject to change based on feedback and market conditions.</p>
+          <div class="roadmap-list">
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2026.06–07</div>
+              <div class="roadmap-dot active"></div>
+              <div class="roadmap-content">
+                <strong>Combat System</strong>
+                Core combat loop: 2 weapons, 2 playable characters, 2 enemies. Token system, positioning mechanics, basic UI, playtesting, and iteration.
+                <div class="roadmap-note">Ongoing: market research and value-curve analysis to validate the commercial direction.</div>
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2026.08</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Combat UI</strong>
+                Full redesign of the combat UI. Improvements to action feedback and readability. Playtesting and iteration.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2026.09</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Enemy AI</strong>
+                Implement State Tree for 2 enemies. Playtesting and iteration.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2026.10</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Map Navigation</strong>
+                Node-based map system, basic events, map UI. Integrated playtesting with the combat loop.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2026.11–2027.01</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Initial Quality Pass</strong>
+                Adjust and customize visuals and audio based on existing assets and SFX. Use existing animations. Playtesting and iteration.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2027.02-03</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Additional Enemies &amp; Front End</strong>
+                Start menu, settings, save/load system. Additional enemies to complete a full run. Playtesting.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2027.03-04</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Performance Check, Testing &amp; Early Release — v0.1</strong>
+                Performance profiling with Unreal Insights, testing across various hardware configurations. Early release on PC platforms such as itch.io and Steam. Continued testing and iteration toward full release.
+              </div>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-date">2027.Q4</div>
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-content">
+                <strong>Full Release</strong>
+                Final polish and bug fixes. Community engagement and support.
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div><!-- /.project-body -->
+
+      <!-- VIDEO inside card -->
+      <div class="card-video">
+        <div class="card-video-header" onclick="toggleVideo(this)">
+          <div>
+            <div class="card-video-label">Prototype Video</div>
+            <div class="card-video-title">Combat system overview — In development</div>
+          </div>
+          <span class="card-video-toggle">▼</span>
+        </div>
+        <div class="card-video-body" style="display:none;">
+          <!--
+            Replace VIDEO_ID with video ID / link.
+            Unlisted videos embed without login requirement.
+          -->
+          <div class="video-embed">
+            <div style="position:relative; width:100%; height:0px; padding-bottom:66.298%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/ell8rd?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+          </div>
+          <!--          <div class="video-placeholder">-->
+          <!--            <div class="video-placeholder-inner">-->
+          <!--              <span>Video — Coming soon</span>-->
+          <!--            </div>-->
+          <!--          </div>-->
+        </div>
+      </div>
+
+    </div><!-- /.project-card -->
+
+    <!-- ARCHITECTURE -->
+    <div class="project-card">
+      <div class="project-body">
+        <div class="section-label">System Architecture</div>
+        <div class="arch-diagram-img" onclick="openLightbox([{src:'wanderers/img/diagram.png',alt:'Architecture Diagram'}],0)">
+          <img src="/wanderers/img/diagram.png" alt="Wanderers of the Mist Simplified Architecture Diagram" />
+          <span class="img-zoom-hint">Click to enlarge</span>
+        </div>
+        <p class="arch-desc">
+          The combat pipeline starts at a central <code>BattleBoard</code>, which routes through the <code>TurnHandler</code> and <code>ActionSystemComponent</code> to a static <code>TokenResolver</code>. Status token changes propagate to the UI layer via attribute delegates, so no polling is required. Positioning data is written directly to each unit's Ability System Component when a slot is assigned.
+        </p>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="card-video">
+        <div class="card-video-header" onclick="toggleVideo(this)">
+          <div>
+            <div class="card-video-label">System Overview Video</div>
+            <div class="card-video-title">System structure in the editor — In development</div>
+          </div>
+          <span class="card-video-toggle">▼</span>
+        </div>
+        <div class="card-video-body" style="display:none;">
+          <div style="position:relative; width:100%; height:0px; padding-bottom:56.693%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/yh5pj1?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+          <!--          <div class="video-placeholder">-->
+          <!--            <div class="video-placeholder-inner">-->
+          <!--              <span>Video — Coming soon</span>-->
+          <!--            </div>-->
+          <!--          </div>-->
+        </div>
+      </div>
+
+      <!-- GITHUB LINK -->
+      <a class="card-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/wanderers/architecture.md" target="_blank" rel="noopener">
+        <div>
+          <div class="card-video-label">Code Reference</div>
+          <div class="card-video-title">Diagram details — GitHub</div>
+        </div>
+        <span class="card-link-arrow">→</span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ACTION PROTOTYPE -->
+  <div class="project-card" style="margin-top:1.5rem;">
+    <div class="project-body">
+      <div class="section-label">Real-Time Combat System — Technical Exploration</div>
+      <h2 class="project-name">Ninja Gaiden 2-Inspired Action Prototype</h2>
+      <p class="project-sub">Paused, unfinished real-time action exploration &mdash; UE5 C++ &mdash; developed prior to pivoting to a turn-based roguelite</p>
+
+      <p class="project-desc">
+        A prototype built to validate the core technical feasibility of a real-time combat system inspired by Ninja Gaiden 2. Implemented input buffering, animation-driven attack windows, and GAS ability activation via AnimNotifyState in UE5 C++. Development was intentionally paused before completion in favor of moving to a more scoped, shippable turn-based roguelite project. This is an unfinished exploration, not a failure — the decision reflects realistic prioritization.
+      </p>
+
+      <div class="project-meta">
+        <span class="tag">UE5 C++</span>
+        <span class="tag">Gameplay Ability System</span>
+        <span class="tag">Animation Blueprint</span>
+        <span class="tag">Combo System</span>
+        <span class="tag">Input Buffering</span>
+      </div>
+    </div>
+
+    <div class="card-video">
+      <div class="card-video-header" onclick="toggleVideo(this)">
+        <div>
+          <div class="card-video-label">Debug Video</div>
+          <div class="card-video-title">Combo input window debug view — Slow motion</div>
+        </div>
+        <span class="card-video-toggle">▼</span>
+      </div>
+      <div class="card-video-body" style="display:none;">
+        <div class="video-embed">
+          <div style="position:relative; width:100%; height:0px; padding-bottom:60.504%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/iyjno2?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+        </div>
+
+        <div class="debug-legend">
+          <div class="debug-legend-title">Color Legend</div>
+          <ul class="debug-legend-list">
+            <li><span class="debug-swatch" style="background:#ffffff;"></span>White — Idle state. Nothing is happening.</li>
+            <li><span class="debug-swatch" style="background:#cc3333;"></span>Red — Animation is playing. Input is not accepted.</li>
+            <li><span class="debug-swatch" style="background:#ddbb44;"></span>Yellow — Input buffer window. Input can be given or changed before the next animation begins.</li>
+            <li><span class="debug-swatch" style="background:#44aa55;"></span>Green — Next attack window.</li>
+          </ul>
+          <p class="debug-legend-note">
+            As noted above, no input is accepted while red. Green marks the timing at which the next attack will actually play, but only if the correct input was given beforehand. Input can be given at any point during the green window; missing this window ends the combo, and it usually transitions straight into red (an unresponsive animation state).<br><br>
+            During the yellow buffer window, the last correct button pressed is remembered. If a buffered input exists once the animation reaches the green attack window, it fires automatically. If both correct and incorrect inputs are buffered, the most recently entered correct input takes priority.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--    <div class="card-video">-->
+    <!--      <div class="card-video-header" onclick="toggleVideo(this)">-->
+    <!--        <div>-->
+    <!--          <div class="card-video-label">System Overview Video</div>-->
+    <!--          <div class="card-video-title">Animation Blueprint state machine &amp; GAS ability configuration</div>-->
+    <!--        </div>-->
+    <!--        <span class="card-video-toggle">▼</span>-->
+    <!--      </div>-->
+    <!--      <div class="card-video-body" style="display:none;">-->
+    <!--        <div class="video-embed">-->
+    <!--          <iframe allow="fullscreen" allowfullscreen src="PLACEHOLDER_VIDEO_URL" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <!-- CODE SAMPLES LINK -->
+    <a class="card-link" href="https://github.com/bel-mont/portfolio.github.io/blob/main/ng2_proto/" target="_blank" rel="noopener">
+      <div>
+        <div class="card-video-label">Code Samples</div>
+        <div class="card-video-title">Implementation details — GitHub</div>
+      </div>
+      <span class="card-link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- ART -->
+  <section id="art">
+    <div class="ornament">
+      <svg width="100%" height="20" viewBox="0 0 600 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="10" x2="260" y2="10" stroke="#524a72" stroke-width="1"/>
+        <polygon points="300,2 310,10 300,18 290,10" fill="none" stroke="#D4AE58" stroke-width="1"/>
+        <line x1="340" y1="10" x2="600" y2="10" stroke="#524a72" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="section-label">Art &amp; 3D</div>
+    <p class="art-caption" style="margin-top:0.6rem;margin-bottom:0.9rem;">* The 3D models shown here are not necessarily related to the game development project above.</p>
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="section-label">Art Deco Locker — Design Exploration</div>
+        <p class="arch-desc" style="margin:0.45rem 0 0.25rem;">
+          A free-form design exploration using Art Deco elements. Not a finished piece — an experimental study.</p>
+        <p class="roadmap-note" style="margin-bottom:1rem;">Tools used: Maya</p>
+        <div class="art-grid">
+          <div class="art-cell" onclick="openArtLightbox(0)"><img src="/img/renders/Locker1.webp" alt="Locker 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(1)"><img src="/img/renders/Locker2.webp" alt="Locker 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(2)"><img src="/img/renders/Locker6.webp" alt="Locker 3 Render"></div>
+        </div>
+
+        <hr class="art-group-divider">
+
+        <div class="section-label">Misericorde Dagger — Reference Replica</div>
+        <p class="arch-desc" style="margin:0.45rem 0 0.25rem;">
+          A replica based on a rusted German misericorde dagger, styled with wear and damage. Not an original design — done as a structural learning exercise.
+        </p>
+        <p class="roadmap-note" style="margin-bottom:1rem;">Tools used: Blender</p>
+        <div class="art-grid">
+          <div class="art-cell" onclick="openArtLightbox(3)"><img src="/img/renders/Misericorde.webp" alt="Misericorde 1 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(4)"><img src="/img/renders/Misericorde2.webp" alt="Misericorde 2 Render"></div>
+          <div class="art-cell" onclick="openArtLightbox(5)"><img src="/img/renders/Misericorde3.webp" alt="Misericorde 3 Render"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Last updated: 2026/07/25</p>
+  </footer>
+
+</main>
+
+<script>
+  // Nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => observer.observe(s));
+
+  // Video toggle inside project card
+  function toggleVideo(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.card-video-toggle');
+    const open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    arrow.style.transform = open ? '' : 'rotate(180deg)';
+  }
+
+  // ── LIGHTBOX ──
+  let _lb;
+  let _lbImages = [];
+  let _lbIdx = 0;
+
+  function _getLb() { return _lb || (_lb = document.getElementById('lightbox')); }
+
+  const artImages = [
+    { src: '/img/renders/Locker1.webp', alt: 'Locker 1 Render' },
+    { src: '/img/renders/Locker2.webp', alt: 'Locker 2 Render' },
+    { src: '/img/renders/Locker6.webp', alt: 'Locker 3 Render' },
+    { src: '/img/renders/Misericorde.webp', alt: 'Misericorde 1 Render' },
+    { src: '/img/renders/Misericorde2.webp', alt: 'Misericorde 2 Render' },
+    { src: '/img/renders/Misericorde3.webp', alt: 'Misericorde 3 Render' },
+  ];
+
+  function openLightbox(images, startIndex) {
+    _lbImages = images;
+    _lbIdx = startIndex || 0;
+    _renderLb();
+    _getLb().style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openArtLightbox(index) {
+    openLightbox(artImages, index);
+  }
+
+  function closeLightbox() {
+    _getLb().style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function lightboxNav(dir) {
+    _lbIdx = (_lbIdx + dir + _lbImages.length) % _lbImages.length;
+    _renderLb();
+  }
+
+  function _renderLb() {
+    const img     = document.getElementById('lb-img');
+    const ph      = document.getElementById('lb-ph');
+    const counter = document.getElementById('lb-counter');
+    const prev    = document.getElementById('lb-prev');
+    const next    = document.getElementById('lb-next');
+    const cur     = _lbImages[_lbIdx];
+
+    if (cur && cur.src) {
+      img.src = cur.src;
+      img.alt = cur.alt || '';
+      img.style.display = 'block';
+      ph.style.display  = 'none';
+    } else {
+      img.style.display = 'none';
+      ph.style.display  = 'flex';
+    }
+
+    const multi = _lbImages.length > 1;
+    prev.style.display    = multi ? 'flex' : 'none';
+    next.style.display    = multi ? 'flex' : 'none';
+    counter.textContent   = multi ? (_lbIdx + 1) + ' / ' + _lbImages.length : '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lb = _getLb();
+    if (!lb || lb.style.display === 'none') return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   lightboxNav(-1);
+    if (e.key === 'ArrowRight')  lightboxNav(1);
+  });
+</script>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" style="display:none">
+  <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div class="lightbox-content">
+    <div class="lightbox-stage">
+      <img id="lb-img" src="" alt="" style="display:none">
+      <div id="lb-ph" class="lb-placeholder" style="display:none">
+        <span>Image</span>
+      </div>
+      <button id="lb-prev" class="lightbox-btn lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+      <button id="lb-next" class="lightbox-btn lightbox-next" onclick="lightboxNav(1)">›</button>
+    </div>
+    <div id="lb-counter" class="lightbox-counter"></div>
+  </div>
+</div>
+
+</body>
+</html>
